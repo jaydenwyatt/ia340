@@ -40,7 +40,37 @@ update course
 set p_email= 'p3@jmu.edu'
 where p_email = 'p1@jmu.edu';
 
+
 delete from professor 
 where p_email = 'p1@jmu.edu'
+
+--q2.7
+select * from enroll
+
+--q2.8
+select c_number, count (*) as num_student
+
+from enroll
+group by c_number
+order by num_student desc
+
+limit 1
+
+--q2.9
+select professor.p_name,
+		course .c_name 
+from professor 
+inner join course 
+on professor .p_email = course .p_email
+
+--q2.10
+select professor .p_name,
+		count (course .c_name) as num_course
+from professor
+inner join course
+on professor .p_email = course .p_email
+group by professor .p_name
+order by num_course desc
+limit 1 
 
 
